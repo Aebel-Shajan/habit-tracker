@@ -18,12 +18,15 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
+import habit_tracker.views
 from quickstart import views
+
 
 # Wire up our API using automatic URL routing
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'habits', habit_tracker.views.HabitViewSet,  basename='habit')
 
 # Additionally, we include login urls for browsable api
 urlpatterns = [
